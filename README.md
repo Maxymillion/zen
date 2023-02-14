@@ -8,11 +8,12 @@ After installing the plugin you can quite easily change the "hidden items" from 
 1. Install BRAT from the Community Plugins in Obsidian.
 2. Open the command palette and run the command BRAT: Add a beta plugin for testing.
 3. Paste this repo's link into the pop-up.
-	a. `https://github.com/Maxymillion/zen`
-4. Click on Add Plugin -- wait a few seconds and BRAT will tell you what is going on
+	a. `https://github.com/Maxymillion/zen`.
+4. Click on Add Plugin -- wait a few seconds and BRAT will tell you what is going on.
 5. After BRAT confirms the installation, in Settings go to the **Community plugins ** tab.
 6. Refresh the Community plugins list.
-7. Enable the **Zen** plugin
+7. Enable the **Zen** plugin.
+8. If you do find any bugs, please report them [here](https://github.com/Maxymillion/zen/issues).
 
 ## Screen Capture
 [![Screenshot](https://s3.gifyu.com/images/Screen-Recording-2023-02-14-at-15.07.12.gif)](https://gifyu.com/image/Sq8c0)
