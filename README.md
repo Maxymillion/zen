@@ -18,8 +18,14 @@ After installing the plugin you can quite easily change the "hidden items" from 
 7. Enable the **Zen** plugin.
 8. If you do find any bugs, please report them [here](https://github.com/Maxymillion/zen/issues).
 
-## Screen Capture
-[![Screenshot](https://s3.gifyu.com/images/Screen-Recording-2023-02-14-at-15.07.12.gif)](https://gifyu.com/image/Sq8c0)
+## Screenshots
+### Enable/Disable Zen
+![Screenshot](https://s3.gifyu.com/images/Screen-Recording-2023-02-14-at-15.07.12.gif)
+### Options
+![Options 1](https://i.imgur.com/ddO59TN.png)
+### Options - Highlights
+Sometimes those names can be quite convoluted, hold the eye button next to the toggle to get a glimpse of which element you will be hiding.
+![Options 1](https://i.imgur.com/ddO59TN.png)
 
 ## Credits
 Based on the [Asana Sync](https://github.com/Maxymillion/asana-sync-plugin) codebase.
