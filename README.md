@@ -4,6 +4,16 @@ A focus mode Obsidian plugin. Inspired by "iA Writer". Sometimes you need to rem
 ## Instructions
 After installing the plugin you can quite easily change the "hidden items" from the settings tab.
 
+### (Optional) Install beta using [Obsidian42 - BRAT](https://github.com/TfTHacker/obsidian42-brat)
+1. Install BRAT from the Community Plugins in Obsidian.
+2. Open the command palette and run the command BRAT: Add a beta plugin for testing.
+3. Paste this repo's link into the pop-up.
+	a. `https://github.com/Maxymillion/zen`
+4. Click on Add Plugin -- wait a few seconds and BRAT will tell you what is going on
+5. After BRAT confirms the installation, in Settings go to the **Community plugins ** tab.
+6. Refresh the Community plugins list.
+7. Enable the **Zen** plugin
+
 ## Screen Capture
 [![Screenshot](https://s3.gifyu.com/images/Screen-Recording-2023-02-14-at-15.07.12.gif)](https://gifyu.com/image/Sq8c0)
 
