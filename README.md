@@ -1,8 +1,14 @@
 # Zen
-A focus mode Obsidian plugin 
+A focus mode Obsidian plugin. Inspired by "iA Writer". Sometimes you need to remove all distractions, or at least a few. What if you could just disable elements on a whim?
 
-## Status
-Not yet finished, work in progress
+## Instructions
+After installing the plugin you can quite easily change the "hidden items" from the settings tab.
+
+## Screen Capture
+[![Screenshot](https://s3.gifyu.com/images/Screen-Recording-2023-02-14-at-15.07.12.gif)](https://gifyu.com/image/Sq8c0)
 
 ## Credits
 Based on the [Asana Sync](https://github.com/Maxymillion/asana-sync-plugin) codebase.
+
+## Integration
+This plugin works perfectly with my other plugin, [Simple font-size controls](Simple font-size controls) which allows you to use the CMD and = or - key to only increase the font size of the editor instead of the complete UI.
