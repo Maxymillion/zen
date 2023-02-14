@@ -16,13 +16,6 @@ export class SettingsTab extends PluginSettingTab {
 
 		containerEl.empty();
 		containerEl.createEl('h1', {text: pluginConfig.name});
-		let desc = containerEl.createEl('small', {text: pluginConfig.description + " "});
-		containerEl.createEl('br');
-		containerEl.createEl('br');
-
-		new Setting(containerEl)
-			.setHeading()
-			.setName('General');
 
 		new Setting(containerEl)
 			.setHeading()
