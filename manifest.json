@@ -4,7 +4,7 @@
 	"version": "0.5.1",
 	"minAppVersion": "1.1.0",
 	"donation": "https://www.buymeacoffee.com/maxymillion",
-	"description": "An Obsidian plugin to generate unique page names",
+	"description": "A focus mode Obsidian plugin.",
 	"author": "Maxymillion",
 	"authorUrl": "https://github.com/Maxymillion",
 	"isDesktopOnly": false

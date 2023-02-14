@@ -17,9 +17,6 @@ export class SettingsTab extends PluginSettingTab {
 		containerEl.empty();
 		containerEl.createEl('h1', {text: pluginConfig.name});
 		let desc = containerEl.createEl('small', {text: pluginConfig.description + " "});
-		desc.createEl('span', {text: pluginConfig.documentation.text.prefix});
-		desc.createEl('a', {href: pluginConfig.documentation.link.url, text: pluginConfig.documentation.link.text});
-		desc.createEl('span', {text: pluginConfig.documentation.text.suffix});
 		containerEl.createEl('br');
 		containerEl.createEl('br');
 
