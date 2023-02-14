@@ -1,0 +1,119 @@
+/* ---------------------------------------------------------------------------
+Uniqueness for Obsidian by (@Maxymillion)
+
+An Obsidian plugin to generate unique page names
+
+Readme:
+https://github.com/Maxymillion/uniqueness
+
+----------------------------------------------------------------------------- */
+
+
+/*.zen-enabled .side-dock-ribbon{*/
+/*	display: none;*/
+/*}*/
+
+.zen-enabled.zen-module--ribbon.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs.mod-top-left-space .workspace-tab-header-container {
+	padding-left: calc(var(--frame-left-space) + var(--ribbon-width));
+}
+
+.zen-enabled.zen-module--ribbon .workspace-ribbon.mod-left {
+	display: none;
+}
+
+.zen-enabled.zen-module--ribbon .workspace-ribbon.mod-right {
+	visibility: hidden;
+	position: absolute;
+}
+
+.zen-enabled.zen-module--ribbon .workspace-split.mod-right-split {
+	margin-right: 0;
+}
+
+.zen-enabled.zen-module--ribbon .workspace-split.mod-left-split {
+	margin-left: 0;
+}
+
+/*
+Hide right sidedock.
+ */
+
+.zen-enabled.zen-module--sideDockLeft .is-right-sidedock-open .workspace-split.mod-horizontal.mod-left-split {
+	width: 0 !important;
+}
+
+.zen-enabled.zen-module--sideDockRight .is-right-sidedock-open .workspace-split.mod-horizontal.mod-right-split {
+	width: 0 !important;
+}
+
+.zen-enabled.zen-module--sideDockRight .sidebar-toggle-button.mod-right {
+	display: none;
+}
+
+.zen-enabled.zen-module--fileHeader .workspace-split.mod-vertical.mod-root .view-header {
+	display: none;
+}
+
+.zen-enabled.zen-module--sideDockLeft .workspace-tab-header-container {
+	padding-left: calc(var(--frame-left-space) + 36px);
+}
+
+.zen-enabled.zen-module--tabs .workspace-split.mod-vertical.mod-root .workspace-tab-header-container{
+	background: transparent;
+	border-color: transparent;
+	box-shadow: none;
+}
+
+.zen-enabled.zen-module--tabs .workspace-split.mod-vertical.mod-root .workspace-tab-header-container > div {
+	visibility: hidden;
+}
+
+.zen-enabled.zen-module--statusBar .status-bar{
+	display: none;
+}
+
+/*
+height: 0;
+    overflow: hidden;
+ */
+
+.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tab-header-container {
+	padding-left: calc(var(--frame-left-space) + var(--ribbon-width) + 36px);
+}
+
+.zen-enabled.zen-module--sideDockLeft [data-type="com.maxymillion.zen"] {
+	background-color: transparent;
+	position: fixed;
+	height: 24px;
+	top: 9px;
+	left: calc(var(--frame-left-space) + var(--ribbon-width));
+	z-index: var(--layer-popover);
+	/*opacity: 0.4;*/
+}
+
+/*.zen-enabled [data-type="com.maxymillion.zen"] */
+
+[data-type="com.maxymillion.zen"] .workspace-tab-header-status-icon.mod-pinned {
+	display: none;
+}
+
+
+.zen-highlight-el {
+	position: relative;
+}
+
+.zen-highlight-el::after, .zen-highlight-el-ab::after {
+	content: "";
+	left: 0;
+	top: 0;
+	position: absolute;
+	z-index: var(--layer-popover);
+	background: rgba(208, 255, 0, 0.4);
+	width: 100%;
+	height: 100%;
+}
+
+.zen-highlight-el--exception {
+	background: rgba(255, 98, 0, 0.8) !important;
+	z-index: var(--layer-popover);
+}
