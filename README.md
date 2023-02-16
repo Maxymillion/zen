@@ -30,4 +30,4 @@ Sometimes those names can be quite convoluted, hold the eye button next to the t
 Based on the [Asana Sync](https://github.com/Maxymillion/asana-sync-plugin) codebase.
 
 ## Integration
-This plugin works perfectly with my other plugin, [Simple font-size controls](https://github.com/Maxymillion/simple-font-size-controls) which allows you to use the `CMD/CTRL` and `=` or `-` key to only increase the font size of the editor instead of the complete UI.
+This plugin works perfectly with my other plugin, [Simple Zoom](https://github.com/Maxymillion/simple-zoom) which allows you to use the `CMD/CTRL` and `=` or `-` key to only increase the font size of the editor instead of the complete UI.
