@@ -21,7 +21,7 @@ export default class Zen extends Plugin {
 
 		this.addSettingTab(new SettingsTab(this.app, this));
 
-		// @ts-ignore
+
 		this.registerView(VIEW_TYPE_ZEN,  (leaf: ZenLeaf) => {
 			leaf.setPinned(true);
 			this.zenView = new ZenView(leaf, this);
