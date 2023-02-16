@@ -5,7 +5,7 @@ interface Integration {
 	available: boolean,
 	settings: {
 		type: "enable" | "disable",
-		callback(plugin: any): any
+		callback(plugin: any): void
 	}[]
 }
 
@@ -18,12 +18,12 @@ export const pluginIntegrations: Integration[] = [
 		settings: [
 			{
 				type: "enable",
-				callback(plugin: any): any {
+				callback(plugin: any): void {
 					return plugin.enableTypewriterScroll();
 				}
 			}, {
 				type: "disable",
-				callback(plugin: any): any {
+				callback(plugin: any): void {
 					return plugin.disableTypewriterScroll();
 				}
 			}
