@@ -7,23 +7,26 @@ import {DEFAULT_SETTINGS, Settings} from "./utils/types";
 import {SettingsTab} from "./components/Settings";
 
 import {VIEW_TYPE_ZEN} from "./constants";
-import {ZenView} from "./ui/ZenView";
+import {ZenLeaf, ZenView} from "./ui/ZenView";
+import {pluginConfig} from "./plugin.config";
 
 export default class Zen extends Plugin {
 	settings: Settings;
 	zenView: ZenView;
 
 	async onload() {
+		console.log(`Loading ${pluginConfig.name}`);
+
 		await this.loadSettings();
 
 		this.addSettingTab(new SettingsTab(this.app, this));
 
 		// @ts-ignore
-		this.registerView(VIEW_TYPE_ZEN,  (leaf: WorkspaceLeaf) => {
+		this.registerView(VIEW_TYPE_ZEN,  (leaf: ZenLeaf) => {
 			leaf.setPinned(true);
 			this.zenView = new ZenView(leaf, this);
 			return this.zenView;
-		})
+		});
 
 		this.addCommand({
 			id: 'toggle-zen',
@@ -54,6 +57,7 @@ export default class Zen extends Plugin {
 	}
 
 	async onunload() {
+		console.log(`Unloading ${pluginConfig.name}`);
 		this.app.workspace.detachLeavesOfType(VIEW_TYPE_ZEN);
 	}
 

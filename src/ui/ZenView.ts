@@ -1,16 +1,27 @@
 import {getIcon, Menu, setIcon, View, WorkspaceLeaf} from "obsidian";
 import {VIEW_TYPE_ZEN} from "../constants";
 import Zen from "../main";
+import {pluginConfig} from "../plugin.config";
 
+
+export class ZenLeaf extends WorkspaceLeaf{
+	tabHeaderEl: HTMLElement;
+
+	tabHeaderInnerIconEl: HTMLElement;
+}
 
 export class ZenView extends View {
-	leaf: WorkspaceLeaf;
+	leaf: ZenLeaf;
 
 	headerIcon: HTMLElement;
 
+	lastActiveSibling: HTMLElement | undefined;
+
 	plugin: Zen;
 
-	constructor(leaf: WorkspaceLeaf, plugin: Zen) {
+	navigation: true;
+
+	constructor(leaf: ZenLeaf, plugin: Zen) {
 		super(leaf);
 		this.leaf = leaf;
 		this.plugin = plugin;
@@ -26,19 +37,15 @@ export class ZenView extends View {
 
 	onload() {
 
-		if(this.app.workspace.leftSplit){
+		if (this.app.workspace.leftSplit) {
 			this.createHeaderIcon();
 		}
 
+		this.leaf.tabHeaderEl.draggable =false;
+
 		this.updateClass();
 
-		// @ts-ignore
-		this.leaf.tabHeaderEl.addEventListener("click", async (e: any) => {
-			e.stopPropagation();
-			e.preventDefault();
-			await this.toggleZen();
-		});
-
+		this.addEventListeners();
 
 		super.onload();
 	}
@@ -49,11 +56,18 @@ export class ZenView extends View {
 		await this.updateClass();
 	}
 
-	createHeaderIcon() {
+	addEventListeners(){
+		this.leaf.tabHeaderEl.addEventListener("click", async (e: any) => {
+			e.stopPropagation();
+			e.preventDefault();
+			await this.toggleZen();
+		});
+	}
 
+	createHeaderIcon() {
 		let headerIcon = createEl("div", {
 			cls: "zen-header",
-			attr: {"data-zen": "icon", "aria-label": "Toggle Zen", "aria-label-position": "right"}
+			attr: {"data-zen": "icon", "aria-label": "Zen", "aria-label-position": "bottom"}
 		});
 
 		let headerInner = createEl("div", {cls: "zen-header-inner"});
@@ -74,12 +88,10 @@ export class ZenView extends View {
 
 	async updateClass(): Promise<void> {
 
+		setIcon(this.leaf.tabHeaderInnerIconEl, this.plugin.settings.enabled ? 'eye-off' : 'eye');
+
 		if (this.plugin.settings.enabled) {
 			document.body.classList.add("zen-enabled");
-
-
-			// @ts-ignore
-			setIcon(this.leaf.tabHeaderInnerIconEl, this.plugin.settings.enabled ? 'eye-off' : 'eye');
 
 			Object.keys(this.plugin.settings.preferences).map((key) => {
 				// @ts-ignore
@@ -92,6 +104,7 @@ export class ZenView extends View {
 			document.body.classList.remove("zen-enabled");
 			document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("zen-module--")).join(" ").trim();
 		}
+
 		await this.plugin.saveSettings();
 	}
 
@@ -100,10 +113,10 @@ export class ZenView extends View {
 	}
 
 	getDisplayText(): string {
-		return 'Toggle Zen';
+		return 'Zen';
 	}
 
 	getIcon(): string {
-		return this.plugin.settings.enabled ? 'eye' : 'eye-off';
+		return !this.plugin.settings.enabled ? 'eye' : 'eye-off';
 	}
 }
