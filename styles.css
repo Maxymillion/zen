@@ -46,10 +46,6 @@ https://github.com/Maxymillion/zen
 	left: calc(var(--frame-left-space) + var(--ribbon-width));
 }
 
-.zen-enabled:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless .mod-top .workspace-tab-header-container{
-	-webkit-app-region: none !important;
-}
-
 /*
  * Ribbon Styling, originally from the "Hider" Obsidian plugin.
  */
