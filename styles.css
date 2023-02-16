@@ -10,7 +10,7 @@ https://github.com/Maxymillion/zen
 
 
 .zen-header {
-	--webkit-app-region: no-drag;
+	-webkit-app-region: no-drag;
 	position: absolute;
 	left: var(--size-4-2);
 	top: 0;
@@ -47,7 +47,7 @@ https://github.com/Maxymillion/zen
 }
 
 .zen-enabled:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless .mod-top .workspace-tab-header-container{
-	--webkit-app-region: none !important;
+	-webkit-app-region: none !important;
 }
 
 /*
