@@ -19,8 +19,8 @@ After installing the plugin you can quite easily change the "hidden items" from 
 8. If you do find any bugs, please report them [here](https://github.com/Maxymillion/zen/issues).
 
 ## Integrations
-The plugin contains a system which allows end users to write integrations following a provided interface. This allows for functions called when entering and leaving zen-mode. 3 I've written an integration for the following plugin(s):
-- [Typewriter Scroll Obsidian Plugin](https://github.com/deathau/cm-typewriter-scroll-obsidian), the integrations enables/disables the typewriter interface when entering/leaving zen-mode.
+The plugin contains a system which allows end users to write integrations following a provided interface. This allows for functions called when entering and leaving zen-mode. I've written an integration for the following plugin(s):
+- [Typewriter Scroll Obsidian Plugin by deathau](https://github.com/deathau/cm-typewriter-scroll-obsidian), the integrations enables/disables the typewriter interface when entering/leaving zen-mode.
 
 ## Screenshots
 ### Enable/Disable Zen
