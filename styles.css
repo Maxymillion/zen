@@ -47,7 +47,7 @@ https://github.com/Maxymillion/zen
 }
 
 .zen-enabled.body:not(.is-grabbing):not(.is-fullscreen).is-hidden-frameless .mod-top .workspace-tab-header-container{
-	--webkit-app-region: "none";
+	--webkit-app-region: none !important;
 }
 
 /*
