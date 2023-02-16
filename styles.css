@@ -8,6 +8,44 @@ https://github.com/Maxymillion/zen
 
 ----------------------------------------------------------------------------- */
 
+
+.zen-header {
+	--webkit-app-region: no-drag;
+	position: absolute;
+	left: var(--size-4-2);
+	top: 0;
+	height: auto !important;
+	width: auto !important;
+	align-items: center;
+	display: none;
+	cursor: pointer;
+	padding: var(--size-4-2) 0 7px 0;
+	opacity: 0.5;
+	transition: ease opacity 0.250s;
+}
+
+.zen-header:hover {
+	opacity: 0.8;
+}
+
+.zen-enabled.zen-module--sideDockLeft .zen-header {
+	display: flex;
+}
+
+.zen-header-inner svg {
+	--icon-size: var(--icon-l);
+	--icon-stroke: var(--icon-l-stroke-width);
+}
+
+.zen-header-inner {
+	display: inline-flex;
+	padding: var(--size-2-2) var(--size-2-3);
+}
+
+.mod-macos .zen-header {
+	left: calc(var(--frame-left-space) + var(--ribbon-width));
+}
+
 /*
  * Ribbon Styling, originally from the "Hider" Obsidian plugin.
  */
@@ -53,12 +91,24 @@ https://github.com/Maxymillion/zen
 	width: 0 !important;
 }
 
-.zen-enabled.zen-module--sideDockLeft .workspace-tab-header-container {
-	padding-left: calc(var(--frame-left-space) + 36px);
+.zen-enabled.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container {
+	padding-left: 30px;
 }
 
-.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tab-header-container {
-	padding-left: calc(var(--frame-left-space) + var(--ribbon-width) + 36px);
+.zen-enabled.zen-module--sideDockLeft.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs:first-of-type .workspace-tab-header-container {
+	padding-left: calc(var(--frame-left-space) + 30px);
+}
+
+.zen-enabled.zen-module--ribbon.zen-module--sideDockRight .workspace-tab-header-container {
+	padding-right: 3px !important;
+}
+
+.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container  {
+	padding-left: calc(var(--ribbon-width) + 30px);
+}
+
+.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs:first-of-type .workspace-tab-header-container {
+	padding-left: calc(var(--frame-left-space) + var(--ribbon-width) + 30px);
 }
 
 /*
@@ -73,7 +123,7 @@ https://github.com/Maxymillion/zen
  * Tabs
  */
 
-.zen-enabled.zen-module--tabs .workspace-split.mod-vertical.mod-root .workspace-tab-header-container{
+.zen-enabled.zen-module--tabs .workspace-split.mod-vertical.mod-root .workspace-tab-header-container {
 	background: transparent;
 	border-color: transparent;
 	box-shadow: none;
@@ -87,7 +137,7 @@ https://github.com/Maxymillion/zen
  * Status Bar
  */
 
-.zen-enabled.zen-module--statusBar .status-bar{
+.zen-enabled.zen-module--statusBar .status-bar {
 	display: none;
 }
 
@@ -122,13 +172,3 @@ https://github.com/Maxymillion/zen
 [data-type="com.maxymillion.zen"] .workspace-tab-header-status-icon.mod-pinned {
 	display: none;
 }
-
-.zen-enabled.zen-module--sideDockLeft [data-type="com.maxymillion.zen"] {
-	background-color: transparent;
-	position: fixed;
-	height: 24px;
-	top: 9px;
-	left: calc(var(--frame-left-space) + var(--ribbon-width));
-	z-index: var(--layer-popover);
-}
-
