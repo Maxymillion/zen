@@ -25,27 +25,31 @@ export class ZenView extends View {
 	}
 
 	onload() {
-		let zenLeaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_ZEN)[0];
 
-		if (zenLeaf) {
-			this.createHeaderIcon(zenLeaf);
-			// @ts-ignore
-			this.updateClass(zenLeaf, this.plugin.settings.enabled);
-			// @ts-ignore
-			zenLeaf.tabHeaderEl.addEventListener("click", async (e: any) => {
-				e.stopPropagation();
-				e.preventDefault();
-
-				this.plugin.settings.enabled = !this.plugin.settings.enabled;
-				await this.plugin.saveSettings();
-				await this.updateClass(zenLeaf, this.plugin.settings.enabled);
-			});
+		if(this.app.workspace.leftSplit){
+			this.createHeaderIcon();
 		}
+
+		this.updateClass();
+
+		// @ts-ignore
+		this.leaf.tabHeaderEl.addEventListener("click", async (e: any) => {
+			e.stopPropagation();
+			e.preventDefault();
+			await this.toggleZen();
+		});
+
 
 		super.onload();
 	}
 
-	createHeaderIcon(zenLeaf: WorkspaceLeaf) {
+	async toggleZen() {
+		this.plugin.settings.enabled = !this.plugin.settings.enabled;
+		await this.plugin.saveSettings();
+		await this.updateClass();
+	}
+
+	createHeaderIcon() {
 
 		let headerIcon = createEl("div", {
 			cls: "zen-header",
@@ -59,9 +63,7 @@ export class ZenView extends View {
 		headerIcon.appendChild(headerInner);
 
 		headerInner.addEventListener("click", async () => {
-			this.plugin.settings.enabled = !this.plugin.settings.enabled;
-			await this.plugin.saveSettings();
-			await this.updateClass(zenLeaf, this.plugin.settings.enabled);
+			await this.toggleZen();
 		});
 
 		this.headerIcon = headerIcon;
@@ -70,26 +72,27 @@ export class ZenView extends View {
 		this.app.workspace.leftSplit.getContainer().containerEl.appendChild(headerIcon);
 	}
 
-	async updateClass(leaf: any, currentState: boolean): Promise<void> {
+	async updateClass(): Promise<void> {
 
-		if (currentState) {
+		if (this.plugin.settings.enabled) {
 			document.body.classList.add("zen-enabled");
 
+
 			// @ts-ignore
-			setIcon(leaf.tabHeaderInnerIconEl, this.plugin.settings.enabled? 'eye-off' : 'eye');
+			setIcon(this.leaf.tabHeaderInnerIconEl, this.plugin.settings.enabled ? 'eye-off' : 'eye');
 
 			Object.keys(this.plugin.settings.preferences).map((key) => {
 				// @ts-ignore
 				if (this.plugin.settings.preferences[key] === true) {
 					document.body.classList.add("zen-module--" + key);
 				}
-			})
-			await this.plugin.saveSettings();
+			});
+
 		} else {
 			document.body.classList.remove("zen-enabled");
 			document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("zen-module--")).join(" ").trim();
-			await this.plugin.saveSettings();
 		}
+		await this.plugin.saveSettings();
 	}
 
 	getViewType(): string {

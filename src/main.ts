@@ -32,8 +32,7 @@ export default class Zen extends Plugin {
 				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
 				if (markdownView) {
 					if (!checking) {
-						let zenButton = document.querySelector("[data-type='com.maxymillion.zen']") as HTMLElement;
-						zenButton.click();
+						this.zenView.toggleZen();
 					}
 					return true;
 				}
