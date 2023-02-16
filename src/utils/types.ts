@@ -8,7 +8,9 @@ export interface Settings {
 		sideDockLeft: boolean,
 		sideDockRight: boolean
 	},
+	integrations: Array<{ name: string, description: string, enabled: boolean, available: boolean }>
 }
+
 export const DEFAULT_SETTINGS: Settings = {
 	enabled: false,
 	preferences: {
@@ -18,5 +20,6 @@ export const DEFAULT_SETTINGS: Settings = {
 		fileHeader: false,
 		sideDockLeft: true,
 		sideDockRight: true,
-	}
+	},
+	integrations: []
 }

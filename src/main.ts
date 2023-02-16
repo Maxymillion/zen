@@ -8,18 +8,20 @@ import {SettingsTab} from "./components/Settings";
 import {VIEW_TYPE_ZEN} from "./constants";
 import {ZenLeaf, ZenView} from "./ui/ZenView";
 import {pluginConfig} from "./plugin.config";
+import {Integrator} from "./components/Intregrator";
+import {pluginIntegrations} from "./plugin.integrations";
 
 export default class Zen extends Plugin {
 	settings: Settings;
 	zenView: ZenView;
+	integrator: Integrator;
 
 	async onload() {
-		console.log(`Loading ${pluginConfig.name}`);
+		console.log(`${pluginConfig.name}: Loading`);
 
 		await this.loadSettings();
 
 		this.addSettingTab(new SettingsTab(this.app, this));
-
 
 		this.registerView(VIEW_TYPE_ZEN,  (leaf: ZenLeaf) => {
 			leaf.setPinned(true);
@@ -28,7 +30,7 @@ export default class Zen extends Plugin {
 		});
 
 		this.addCommand({
-			id: 'toggle-zen',
+			id: 'zen-toggle',
 			name: 'Toggle',
 			checkCallback: (checking: boolean) => {
 				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
@@ -40,6 +42,9 @@ export default class Zen extends Plugin {
 				}
 			}
 		});
+
+		this.integrator = new Integrator(this.app, this);
+		this.integrator.load(pluginIntegrations);
 
 		this.app.workspace.onLayoutReady(async () => {
 			await this.initLeaf();
@@ -56,7 +61,7 @@ export default class Zen extends Plugin {
 	}
 
 	async onunload() {
-		console.log(`Unloading ${pluginConfig.name}`);
+		console.log(`${pluginConfig.name}: Unloading`);
 		this.app.workspace.detachLeavesOfType(VIEW_TYPE_ZEN);
 	}
 

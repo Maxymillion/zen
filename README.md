@@ -18,6 +18,10 @@ After installing the plugin you can quite easily change the "hidden items" from 
 7. Enable the **Zen** plugin.
 8. If you do find any bugs, please report them [here](https://github.com/Maxymillion/zen/issues).
 
+## Integrations
+The plugin contains a system which allows end users to write integrations following a provided interface. This allows for functions called when entering and leaving zen-mode. 3 I've written an integration for the following plugin(s):
+- [Typewriter Scroll Obsidian Plugin](https://github.com/deathau/cm-typewriter-scroll-obsidian), the integrations enables/disables the typewriter interface when entering/leaving zen-mode.
+
 ## Screenshots
 ### Enable/Disable Zen
 ![Screenshot](https://s3.gifyu.com/images/Screen-Recording-2023-02-14-at-15.07.12.gif)
@@ -29,5 +33,6 @@ Sometimes those names can be quite convoluted, hold the eye button next to the t
 ## Credits
 Based on the [Asana Sync](https://github.com/Maxymillion/asana-sync-plugin) codebase.
 
-## Integration
+## Other plugins
 This plugin works perfectly with my other plugin, [Simple Zoom](https://github.com/Maxymillion/simple-zoom) which allows you to use the `CMD/CTRL` and `=` or `-` key to only increase the font size of the editor instead of the complete UI.
+

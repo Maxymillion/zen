@@ -88,6 +88,55 @@ export class SettingsTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				})
 			);
+
+		new Setting(containerEl)
+			.setHeading()
+			.setName("Integrations")
+			.setDesc(createFragment((el) => {
+				let element = el.createSpan({text: "See available integrations "});
+				element.appendChild(el.createEl("a", {
+					href: "https://github.com/Maxymillion/zen#Integrations",
+					text: "here"
+				}));
+			}))
+
+		this.plugin.integrator.update();
+
+		if (this.plugin.settings.integrations.filter(e => e.available).length < 1) {
+			//Add description...
+			new Setting(containerEl)
+				.setDesc(createFragment((el) => {
+					el.createEl("i", {text: "No supported integrations found!"})
+				}))
+		}
+
+
+		this.plugin.settings.integrations.map((el) => {
+			if (el.available) {
+				const integratedPlugin = this.plugin.integrator.getPluginObject(el.name);
+
+				integratedPlugin && new Setting(containerEl)
+					.setName(createFragment((frag) => {
+						let pluginTitle = frag.createEl("a", {
+							cls: "zen-int--link",
+							text: integratedPlugin.manifest.name,
+							href: `${integratedPlugin.manifest.authorUrl}/${integratedPlugin.manifest.id}`
+						});
+						pluginTitle.appendChild(frag.createSpan({
+							cls: "zen-int--author",
+							text: ` by ${integratedPlugin.manifest.author}`
+						}))
+					}))
+					.setDesc(el.description)
+					.addToggle(tc => tc
+						.setValue(el.enabled)
+						.onChange(async (value) => {
+							el.enabled = value;
+							await this.plugin.saveSettings();
+						})
+					)
+			}
+		})
 	}
 
 	highlightElement(c: ButtonComponent, el: string, isAbsolute: boolean = false) {

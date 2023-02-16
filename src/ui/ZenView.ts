@@ -99,9 +99,12 @@ export class ZenView extends View {
 				}
 			});
 
+			this.plugin.integrator.enableIntegrations();
+
 		} else {
 			document.body.classList.remove("zen-enabled");
 			document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("zen-module--")).join(" ").trim();
+			this.plugin.integrator.disableIntegrations();
 		}
 
 		await this.plugin.saveSettings();

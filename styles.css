@@ -42,6 +42,19 @@ https://github.com/Maxymillion/zen
 	padding: var(--size-2-2) var(--size-2-3);
 }
 
+.zen-int--author {
+	opacity: 0.5;
+}
+
+.zen-int--link, .zen-int--link:hover {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.zen-int--link:hover {
+	opacity: 0.7;
+}
+
 .mod-macos .zen-header {
 	left: calc(var(--frame-left-space) + var(--ribbon-width));
 }
@@ -103,11 +116,11 @@ https://github.com/Maxymillion/zen
 	padding-right: 3px !important;
 }
 
-.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container  {
+.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container {
 	padding-left: calc(var(--ribbon-width) + 30px);
 }
 
-.mod-windows.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container  {
+.mod-windows.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container {
 	padding-left: 36px;
 }
 
