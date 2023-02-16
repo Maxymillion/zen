@@ -1,7 +1,6 @@
 import {
 	MarkdownView,
-	Plugin,
-	WorkspaceLeaf
+	Plugin
 } from 'obsidian';
 import {DEFAULT_SETTINGS, Settings} from "./utils/types";
 import {SettingsTab} from "./components/Settings";

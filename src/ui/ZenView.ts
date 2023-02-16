@@ -1,7 +1,6 @@
-import {getIcon, Menu, setIcon, View, WorkspaceLeaf} from "obsidian";
+import {getIcon, setIcon, View, WorkspaceLeaf} from "obsidian";
 import {VIEW_TYPE_ZEN} from "../constants";
 import Zen from "../main";
-import {pluginConfig} from "../plugin.config";
 
 
 export class ZenLeaf extends WorkspaceLeaf{

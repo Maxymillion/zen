@@ -1,7 +1,6 @@
 import {App, ButtonComponent, PluginSettingTab, Setting} from "obsidian";
 import {pluginConfig} from "../../plugin.config";
 import Zen from "../../main";
-import {VIEW_TYPE_ZEN} from "../../constants";
 
 export class SettingsTab extends PluginSettingTab {
 	plugin: Zen;
@@ -67,8 +66,8 @@ export class SettingsTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Left side-dock")
-			.addButton(bc => this.highlightElement(bc, ".workspace-split.mod-horizontal.mod-left-split", false, `.workspace-tab-header[data-type='${VIEW_TYPE_ZEN}']`))
-			.setDesc("Including the side-dock toggle button(s), except the 'zen-toggle-button'.")
+			.addButton(bc => this.highlightElement(bc, ".workspace-split.mod-horizontal.mod-left-split", false))
+			.setDesc("Including the side-dock toggle button(s).")
 			.addToggle(tc => tc
 				.setValue(this.plugin.settings.preferences.sideDockLeft)
 				.onChange(async (value) => {
@@ -91,36 +90,25 @@ export class SettingsTab extends PluginSettingTab {
 			);
 	}
 
-	highlightElement(c: ButtonComponent, el: string, isAbsolute: boolean = false, exceptionEls: string|null = null) {
+	highlightElement(c: ButtonComponent, el: string, isAbsolute: boolean = false) {
 		//Status bar is outside of this.app.workspace.containerEl
 		const element = document.body.find(el);
 
-		const exceptionElements = exceptionEls && document.querySelectorAll(exceptionEls);
 		const highlightClass = isAbsolute ? "zen-highlight-el-ab" : "zen-highlight-el";
-		const exceptionClass = "zen-highlight-el--exception";
 
 		c.setIcon("eye");
 		c.setTooltip("Highlight");
 
 		c.buttonEl.addEventListener("mousedown", () => {
 			element?.classList.add(highlightClass);
-			exceptionElements && exceptionElements.forEach((sEl) =>{
-				sEl.classList.add(exceptionClass);
-			})
 		});
 
 		c.buttonEl.addEventListener("mouseup", () => {
 			element?.classList.remove(highlightClass);
-			exceptionElements && exceptionElements.forEach((sEl) =>{
-				sEl.classList.remove(exceptionClass);
-			})
 		});
 
 		c.buttonEl.addEventListener("mouseleave", () => {
 			element?.classList.remove(highlightClass);
-			exceptionElements && exceptionElements.forEach((sEl) =>{
-				sEl.classList.remove(exceptionClass);
-			})
 		});
 	}
 }
