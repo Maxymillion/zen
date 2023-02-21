@@ -30,6 +30,10 @@ The plugin contains a system which allows end users to write integrations follow
 Sometimes those names can be quite convoluted, hold the eye button next to the toggle to get a glimpse of which element you will be hiding.
 ![Options 1](https://i.imgur.com/ddO59TN.png)
 
+## Todo / Future Plans
+- [] Add Command Macro's to Integrations (which would allow you to run commands on start and close).
+- [] Provide "Focus Profiles" which allows you to go into several "focus modes"
+
 ## Credits
 Based on the [Asana Sync](https://github.com/Maxymillion/asana-sync-plugin) codebase.
 
