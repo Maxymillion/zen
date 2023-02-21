@@ -13,7 +13,7 @@ After installing the plugin you can quite easily change the "hidden items" from 
 3. Paste this repo's link into the pop-up.
 	a. `https://github.com/Maxymillion/zen`.
 4. Click on Add Plugin -- wait a few seconds and BRAT will tell you what is going on.
-5. After BRAT confirms the installation, in Settings go to the **Community plugins ** tab.
+5. After BRAT confirms the installation, in Settings go to the **Community plugins** tab.
 6. Refresh the Community plugins list.
 7. Enable the **Zen** plugin.
 8. If you do find any bugs, please report them [here](https://github.com/Maxymillion/zen/issues).
