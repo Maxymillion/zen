@@ -1,7 +1,7 @@
 {
 	"id": "zen",
 	"name": "Zen",
-	"version": "0.5.9",
+	"version": "0.6",
 	"minAppVersion": "1.1.0",
 	"donation": "https://www.buymeacoffee.com/maxymillion",
 	"description": "A focus mode Obsidian plugin.",
