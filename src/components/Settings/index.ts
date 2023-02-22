@@ -146,7 +146,7 @@ export class SettingsTab extends PluginSettingTab {
 								})
 							)
 
-
+						//Show extra option toggles if they are defined
 						if (Object.keys(el.options).length > 0) {
 							const pluginOptionsTriggerEl = createEl("div", {cls: "zen-int-block--options-trigger"});
 							const caret = getIcon("chevron-down");
@@ -182,11 +182,9 @@ export class SettingsTab extends PluginSettingTab {
 											(pluginOptionsEl.querySelector(".setting-item-control input") as HTMLElement)?.click();
 										}
 									);
-
 								}
 							}
-						)
-						;
+						);
 
 						pluginEl.appendChild(pluginOptionsEl);
 						containerEl.appendChild(pluginEl);

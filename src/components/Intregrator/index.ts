@@ -17,7 +17,6 @@ export class Integrator {
 	constructor(app: App, plugin: Zen) {
 		this.app = app as ExtendedApp;
 		this.plugin = plugin;
-
 	}
 
 	async update() {
