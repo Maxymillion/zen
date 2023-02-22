@@ -3,7 +3,7 @@
 	"name": "Zen",
 	"version": "0.6",
 	"minAppVersion": "1.1.0",
-	"donation": "https://www.buymeacoffee.com/maxymillion",
+	"fundingUrl": "https://github.com/sponsors/Maxymillion",
 	"description": "A focus mode Obsidian plugin.",
 	"author": "Maxymillion",
 	"authorUrl": "https://github.com/Maxymillion",
