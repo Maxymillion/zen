@@ -51,8 +51,105 @@ https://github.com/Maxymillion/zen
 	text-decoration: inherit;
 }
 
+.zen-int-block {
+	background: var(--background-secondary);
+	border-radius: calc(var(--modal-radius) / 2);
+	border: 1px solid var(--divider-color);
+	padding: 0.75em;
+	transition: ease border-color var(--anim-duration-fast), ease opacity var(--anim-duration-fast);
+	margin-bottom: 0.75em;
+}
+
+.zen-int-block[data-enabled="false"] .setting-item-info {
+	opacity: 0.6;
+}
+.zen-int-block[data-enabled="false"]{
+	background-color: var(--background-primary);
+}
+
+
+.zen-int-block:hover {
+	border-color: var(--background-modifier-border-focus);
+}
+
+.zen-int-block > div.setting-item {
+	padding: 0;
+}
+
+.zen-int-block[data-enabled="true"].options-open .zen-int-block--options {
+	margin-top: 0.75em;
+	display: block;
+}
+
+.zen-int-block[data-enabled="true"] .zen-int-block--options-trigger {
+	display: flex;
+}
+
+.zen-int-block--options {
+	padding: 0.75em;
+	background-color: var(--background-primary);
+	display: none;
+}
+
+.zen-int-block--options .setting-item-name {
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+
+.zen-int-block--options .setting-item:last-child {
+	padding-bottom: 0;
+}
+
+.zen-int-block--options .setting-item:hover .setting-item-name {
+	color: var(--text-normal) !important;
+}
+
+.zen-int-block--options .setting-item,
+.zen-int-block--options .checkbox-container {
+	--toggle-width: 25px;
+	--toggle-thumb-width: 10px;
+	height: calc(10px + var(--toggle-border-width));
+}
+
+.zen-int-block--options .setting-item-control {
+	order: -1;
+	width: auto;
+	justify-content: flex-start;
+	flex: 0;
+	padding-right: 0.75em;
+}
+
+.zen-int-block--options .checkbox-container::after {
+	height: calc(10px - var(--toggle-border-width));
+}
+
 .zen-int--link:hover {
 	opacity: 0.7;
+}
+
+.zen-int-block--options-trigger {
+	display: none;
+	align-items: center;
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+	padding-top: var(--size-4-4);
+	line-height: var(--line-height-tight);
+}
+
+.options-open .zen-int-block--options-trigger svg {
+	transform: rotate(180deg);
+}
+
+.zen-int-block--options-trigger span {
+	cursor: pointer;
+}
+
+.zen-int-block--options-trigger svg {
+	cursor: pointer;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	margin-right: 4px;
 }
 
 .mod-macos .zen-header {
