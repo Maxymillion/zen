@@ -1,3 +1,5 @@
+import {IntegrationOptions} from "../plugin.integrations";
+
 export interface Settings {
 	enabled: boolean,
 	preferences: {
@@ -8,7 +10,7 @@ export interface Settings {
 		sideDockLeft: boolean,
 		sideDockRight: boolean
 	},
-	integrations: Array<{ name: string, description: string, enabled: boolean, available: boolean }>
+	integrations: Array<{ name: string, description: string, enabled: boolean, available: boolean, options: IntegrationOptions }>
 }
 
 export const DEFAULT_SETTINGS: Settings = {

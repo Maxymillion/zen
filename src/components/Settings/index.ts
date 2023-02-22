@@ -1,6 +1,7 @@
-import {App, ButtonComponent, PluginSettingTab, Setting} from "obsidian";
+import {App, ButtonComponent, getIcon, PluginSettingTab, Setting} from "obsidian";
 import {pluginConfig} from "../../plugin.config";
 import Zen from "../../main";
+import {Integration} from "../../plugin.integrations";
 
 export class SettingsTab extends PluginSettingTab {
 	plugin: Zen;
@@ -111,32 +112,86 @@ export class SettingsTab extends PluginSettingTab {
 		}
 
 
-		this.plugin.settings.integrations.map((el) => {
-			if (el.available) {
-				const integratedPlugin = this.plugin.integrator.getPluginObject(el.name);
+		this.plugin.settings.integrations.map((el: Integration) => {
+				if (el.available) {
+					const integratedPlugin = this.plugin.integrator.getPluginObject(el.name);
 
-				integratedPlugin && new Setting(containerEl)
-					.setName(createFragment((frag) => {
-						let pluginTitle = frag.createEl("a", {
-							cls: "zen-int--link",
-							text: integratedPlugin.manifest.name,
-							href: `${integratedPlugin.manifest.authorUrl}/${integratedPlugin.manifest.id}`
-						});
-						pluginTitle.appendChild(frag.createSpan({
-							cls: "zen-int--author",
-							text: ` by ${integratedPlugin.manifest.author}`
-						}))
-					}))
-					.setDesc(el.description)
-					.addToggle(tc => tc
-						.setValue(el.enabled)
-						.onChange(async (value) => {
-							el.enabled = value;
-							await this.plugin.saveSettings();
-						})
-					)
+					if (integratedPlugin) {
+						const pluginEl = createEl("div", {cls: "zen-int-block", attr: {"data-enabled": el.enabled}});
+
+						new Setting(pluginEl)
+							.setName(createFragment((frag) => {
+								let pluginTitle = frag.createEl("a", {
+									cls: "zen-int--link",
+									text: integratedPlugin.manifest.name,
+									href: `${integratedPlugin.manifest.authorUrl}/${integratedPlugin.manifest.id}`
+								});
+								pluginTitle.appendChild(frag.createSpan({
+									cls: "zen-int--author",
+									text: ` by ${integratedPlugin.manifest.author}`
+								}))
+							}))
+							.setDesc(el.description)
+							.addToggle(tc => tc
+								.setValue(el.enabled)
+								.onChange(async (value) => {
+									el.enabled = value;
+									pluginEl.setAttr("data-enabled", value);
+
+									if(this.plugin.settings.enabled){
+										this.plugin.integrator.toggleIntegration(el.name, value);
+									}
+
+									await this.plugin.saveSettings();
+								})
+							)
+
+						//Show extra option toggles if they are defined
+						if (Object.keys(el.options).length > 0) {
+							const pluginOptionsTriggerEl = createEl("div", {cls: "zen-int-block--options-trigger"});
+							const caret = getIcon("chevron-down");
+
+							if (caret) {
+								pluginOptionsTriggerEl.append(createFragment((frag) => {
+									frag.appendChild(caret);
+									frag.createSpan({text: "Extra options"});
+								}));
+
+								pluginOptionsTriggerEl.addEventListener("click", (e) => {
+									pluginEl.classList.toggle("options-open");
+								})
+							}
+
+							pluginEl.appendChild(pluginOptionsTriggerEl);
+						}
+						const pluginOptionsEl = createEl("div", {cls: "zen-int-block--options"});
+
+						Object.keys(el.options).map((key: string) => {
+								if (key in integratedPlugin.settings) {
+
+									new Setting(pluginOptionsEl)
+										.setName(el.options[key].description ?? key)
+										.addToggle(tc => tc
+											.setValue(el.options[key].active)
+											.onChange(async (value) => {
+												el.options[key].active = value;
+												await this.plugin.saveSettings();
+											})
+										)
+										.nameEl.addEventListener("click", async (e) => {
+											(pluginOptionsEl.querySelector(".setting-item-control input") as HTMLElement)?.click();
+										}
+									);
+								}
+							}
+						);
+
+						pluginEl.appendChild(pluginOptionsEl);
+						containerEl.appendChild(pluginEl);
+					}
+				}
 			}
-		})
+		)
 	}
 
 	highlightElement(c: ButtonComponent, el: string, isAbsolute: boolean = false) {

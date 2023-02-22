@@ -1,7 +1,7 @@
 import Zen from "../../main";
 import {App} from "obsidian";
 import {pluginConfig} from "../../plugin.config";
-import {DEFAULT_SETTINGS} from "../../utils/types";
+import {Integration} from "../../plugin.integrations";
 
 class ExtendedApp extends App {
 	plugins: any;
@@ -39,7 +39,13 @@ export class Integrator {
 			if (foundPlugin.length > 0) {
 				foundPlugin[0].available = true;
 			} else {
-				this.plugin.settings.integrations.push({enabled: false, available: true, name: el.name, description: el.description});
+				this.plugin.settings.integrations.push({
+					enabled: false,
+					available: true,
+					name: el.name,
+					description: el.description,
+					options: el.options
+				});
 			}
 		});
 
@@ -66,5 +72,13 @@ export class Integrator {
 
 	enableIntegrations() {
 		this.toggleIntegrations("enable");
+	}
+
+	getIntegration(name: string): Integration {
+		return this.integrations.filter(el => el.name === name)[0];
+	}
+
+	toggleIntegration(name: string, enable: boolean) {
+		this.getIntegration(name).settings.filter(el => el.type === (enable ? "enable" : "disable"))[0].callback(this.getPluginObject(name));
 	}
 }
