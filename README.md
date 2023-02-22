@@ -1,6 +1,7 @@
 # Zen
 
-[![GitHub release (latest)](https://img.shields.io/github/v/release/Maxymillion/zen?style=flat-square&sort=semver)](https://github.com/Maxymillion/zen/releases/latest)
+[![GitHub release (latest)](https://img.shields.io/github/v/release/Maxymillion/zen?style=flat-square&sort=semver)](https://github.com/Maxymillion/zen/releases/latest) 
+[![Total Downloads](https://img.shields.io/github/downloads/Maxymillion/Zen/total?style=flat-square)](https://github.com/Maxymillion/zen/releases/latest) 
 
 A focus mode Obsidian plugin. Inspired by "iA Writer". Sometimes you need to remove all distractions, or at least a few. What if you could just disable elements on a whim?
 
