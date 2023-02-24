@@ -1,5 +1,4 @@
 import {App, ButtonComponent, getIcon, PluginSettingTab, Setting} from "obsidian";
-import {pluginConfig} from "../../plugin.config";
 import Zen from "../../main";
 import {Integration} from "../../plugin.integrations";
 

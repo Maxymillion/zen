@@ -1,4 +1,4 @@
-import {getIcon, setIcon, View, WorkspaceLeaf} from "obsidian";
+import {setIcon, View, WorkspaceLeaf} from "obsidian";
 import {VIEW_TYPE_ZEN} from "../constants";
 import Zen from "../main";
 

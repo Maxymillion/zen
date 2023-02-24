@@ -1,5 +1,4 @@
 import {
-	MarkdownView,
 	Plugin
 } from 'obsidian';
 import {DEFAULT_SETTINGS, Settings, ZenPreferences} from "./utils/types";
@@ -7,7 +6,6 @@ import {SettingsTab} from "./components/Settings";
 
 import {VIEW_TYPE_ZEN} from "./constants";
 import {ZenLeaf, ZenView} from "./ui/ZenView";
-import {pluginConfig} from "./plugin.config";
 import {Integrator} from "./components/Intregrator";
 import {pluginIntegrations} from "./plugin.integrations";
 

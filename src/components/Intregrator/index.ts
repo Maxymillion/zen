@@ -1,6 +1,5 @@
 import Zen from "../../main";
 import {App} from "obsidian";
-import {pluginConfig} from "../../plugin.config";
 import {Integration} from "../../plugin.integrations";
 
 class ExtendedApp extends App {

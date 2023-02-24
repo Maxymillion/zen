@@ -1,6 +1,6 @@
 {
 	"name": "zen",
-	"version": "0.6.1",
+	"version": "0.6.2",
 	"description": "A focus mode Obsidian plugin",
 	"main": "main.js",
 	"scripts": {
