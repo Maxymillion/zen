@@ -2,15 +2,17 @@ import {IntegrationOptions} from "../plugin.integrations";
 
 export interface Settings {
 	enabled: boolean,
-	preferences: {
-		ribbon: boolean,
-		tabs: boolean,
-		statusBar: boolean,
-		fileHeader: boolean,
-		sideDockLeft: boolean,
-		sideDockRight: boolean
-	},
+	preferences: ZenPreferences,
 	integrations: Array<{ name: string, description: string, enabled: boolean, available: boolean, options: IntegrationOptions }>
+}
+
+export interface ZenPreferences{
+	ribbon: boolean,
+	tabs: boolean,
+	statusBar: boolean,
+	fileHeader: boolean,
+	sideDockLeft: boolean,
+	sideDockRight: boolean
 }
 
 export const DEFAULT_SETTINGS: Settings = {

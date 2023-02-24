@@ -15,7 +15,7 @@ export class SettingsTab extends PluginSettingTab {
 		const {containerEl} = this;
 
 		containerEl.empty();
-		containerEl.createEl('h1', {text: pluginConfig.name});
+		containerEl.createEl('h1', {text: this.plugin.manifest.name});
 
 		new Setting(containerEl)
 			.setHeading()

@@ -35,7 +35,7 @@ export class ZenView extends View {
 	}
 
 	onload() {
-
+		console.log(this.app);
 		if (this.app.workspace.leftSplit) {
 			this.createHeaderIcon();
 		}
@@ -70,15 +70,13 @@ export class ZenView extends View {
 		});
 
 		let headerInner = createEl("div", {cls: "zen-header-inner"});
-
-		// @ts-ignore
-		headerInner.appendChild(getIcon("eye-off"));
-		headerIcon.appendChild(headerInner);
+		setIcon(headerInner, 'eye-off');
 
 		headerInner.addEventListener("click", async () => {
 			await this.toggleZen();
 		});
 
+		headerIcon.appendChild(headerInner);
 		this.headerIcon = headerIcon;
 
 		// @ts-ignore
