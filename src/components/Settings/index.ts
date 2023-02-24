@@ -195,7 +195,7 @@ export class SettingsTab extends PluginSettingTab {
 
 	highlightElement(c: ButtonComponent, el: string, isAbsolute: boolean = false) {
 		//Status bar is outside of this.app.workspace.containerEl
-		const element = document.body.find(el);
+		const element = this.containerEl.doc.body.find(el);
 
 		const highlightClass = isAbsolute ? "zen-highlight-el-ab" : "zen-highlight-el";
 
@@ -203,15 +203,15 @@ export class SettingsTab extends PluginSettingTab {
 		c.setTooltip("Highlight");
 
 		c.buttonEl.addEventListener("mousedown", () => {
-			element?.classList.add(highlightClass);
+			element?.addClass(highlightClass);
 		});
 
 		c.buttonEl.addEventListener("mouseup", () => {
-			element?.classList.remove(highlightClass);
+			element?.removeClass(highlightClass)
 		});
 
 		c.buttonEl.addEventListener("mouseleave", () => {
-			element?.classList.remove(highlightClass);
+			element?.removeClass(highlightClass);
 		});
 	}
 }

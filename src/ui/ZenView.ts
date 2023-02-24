@@ -1,9 +1,9 @@
 import {setIcon, View, WorkspaceLeaf} from "obsidian";
 import {VIEW_TYPE_ZEN} from "../constants";
 import Zen from "../main";
+import {ZenPreferences} from "../utils/types";
 
-
-export class ZenLeaf extends WorkspaceLeaf{
+export class ZenLeaf extends WorkspaceLeaf {
 	tabHeaderEl: HTMLElement;
 
 	tabHeaderInnerIconEl: HTMLElement;
@@ -13,8 +13,6 @@ export class ZenView extends View {
 	leaf: ZenLeaf;
 
 	headerIcon: HTMLElement;
-
-	lastActiveSibling: HTMLElement | undefined;
 
 	plugin: Zen;
 
@@ -35,12 +33,11 @@ export class ZenView extends View {
 	}
 
 	onload() {
-		console.log(this.app);
 		if (this.app.workspace.leftSplit) {
 			this.createHeaderIcon();
 		}
 
-		this.leaf.tabHeaderEl.draggable =false;
+		this.leaf.tabHeaderEl.draggable = false;
 
 		this.updateClass();
 
@@ -55,7 +52,7 @@ export class ZenView extends View {
 		await this.updateClass();
 	}
 
-	addEventListeners(){
+	addEventListeners() {
 		this.leaf.tabHeaderEl.addEventListener("click", async (e: any) => {
 			e.stopPropagation();
 			e.preventDefault();
@@ -83,25 +80,36 @@ export class ZenView extends View {
 		this.app.workspace.leftSplit.getContainer().containerEl.appendChild(headerIcon);
 	}
 
+	addBodyClasses(addBaseClass ?: boolean): void {
+		if (addBaseClass) {
+			this.containerEl.doc.body.addClass("zen-enabled");
+		}
+		Object.keys(this.plugin.settings.preferences).map((key: string) => {
+			if (this.plugin.settings.preferences[key as keyof ZenPreferences]) {
+				this.containerEl.doc.body.addClass("zen-module--" + key);
+			}
+		})
+	}
+
+	removeBodyClasses(removeBaseClass ?: boolean): void {
+		if (removeBaseClass) {
+			this.containerEl.doc.body.removeClass("zen-enabled");
+		}
+		this.containerEl.doc.body.className = this.containerEl.doc.body.className.split(" ").filter(c => !c.startsWith("zen-module--")).join(" ").trim();
+	}
+
 	async updateClass(): Promise<void> {
 
 		setIcon(this.leaf.tabHeaderInnerIconEl, this.plugin.settings.enabled ? 'eye-off' : 'eye');
 
 		if (this.plugin.settings.enabled) {
-			document.body.classList.add("zen-enabled");
-
-			Object.keys(this.plugin.settings.preferences).map((key) => {
-				// @ts-ignore
-				if (this.plugin.settings.preferences[key] === true) {
-					document.body.classList.add("zen-module--" + key);
-				}
-			});
+			this.removeBodyClasses();
+			this.addBodyClasses(true);
 
 			this.plugin.integrator.enableIntegrations();
 
 		} else {
-			document.body.classList.remove("zen-enabled");
-			document.body.className = document.body.className.split(" ").filter(c => !c.startsWith("zen-module--")).join(" ").trim();
+			this.removeBodyClasses(true);
 			this.plugin.integrator.disableIntegrations();
 		}
 

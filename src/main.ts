@@ -65,12 +65,8 @@ export default class Zen extends Plugin {
 		await this.saveData(this.settings);
 
 		if (this.settings.enabled) {
-			this.zenView.containerEl.doc.body.className = this.zenView.containerEl.doc.body.className.split(" ").filter(c => !c.startsWith("zen-module--")).join(" ").trim();
-			Object.keys(this.settings.preferences).map((key: string) => {
-				if (this.settings.preferences[key as keyof ZenPreferences]) {
-					document.body.classList.add("zen-module--" + key);
-				}
-			})
+			this.zenView.removeBodyClasses();
+			this.zenView.addBodyClasses();
 		}
 	}
 }
