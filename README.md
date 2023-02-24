@@ -35,9 +35,6 @@ Sometimes those names can be quite convoluted, hold the eye button next to the t
 - [ ] Add Command Macro's to Integrations (which would allow you to run commands on start and close).
 - [ ] Provide "Focus Profiles" which allows you to go into several "focus modes"
 
-## Credits
-Based on the [Asana Sync](https://github.com/Maxymillion/asana-sync-plugin) codebase.
-
 ## Other plugins
 This plugin works perfectly with my other plugin, [Simple Zoom](https://github.com/Maxymillion/simple-zoom) which allows you to use the `CMD/CTRL` and `=` or `-` key to only increase the font size of the editor instead of the complete UI.
 
