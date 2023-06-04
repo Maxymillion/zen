@@ -48,6 +48,10 @@ export class ZenView extends View {
 
 	async toggleZen() {
 		this.plugin.settings.enabled = !this.plugin.settings.enabled;
+		if (this.plugin.settings.preferences.fullScreen) {
+			this.plugin.settings.enabled ? this.containerEl.doc.body.requestFullscreen() : this.containerEl.doc.exitFullscreen();
+		}
+
 		await this.plugin.saveSettings();
 		await this.updateClass();
 	}
