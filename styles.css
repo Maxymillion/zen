@@ -28,10 +28,6 @@ https://github.com/Maxymillion/zen
 	opacity: 0.8;
 }
 
-.zen-enabled.zen-module--sideDockLeft .zen-header {
-	display: flex;
-}
-
 .zen-header-inner svg {
 	--icon-size: var(--icon-l);
 	--icon-stroke: var(--icon-l-stroke-width);
