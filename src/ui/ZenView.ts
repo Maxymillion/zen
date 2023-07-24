@@ -76,11 +76,23 @@ export class ZenView extends View {
 		headerIcon.appendChild(headerInner);
 		this.headerIcon = headerIcon;
 
+		let timer: ReturnType<typeof setTimeout>;
+		this.containerEl.doc.onmousemove = () => {
+			if (!this.plugin.settings.enabled) return;
+			if (!this.plugin.settings.preferences.sideDockLeft) return;
+
+			this.headerIcon.style.display = 'flex';
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				this.headerIcon.style.display = 'none';
+			}, 1000);
+		};
+
 		// @ts-ignore
 		this.app.workspace.leftSplit.getContainer().containerEl.appendChild(headerIcon);
 	}
 
-	addBodyClasses(addBaseClass ?: boolean): void {
+	addBodyClasses(addBaseClass?: boolean): void {
 		if (addBaseClass) {
 			this.containerEl.doc.body.addClass("zen-enabled");
 		}
@@ -91,7 +103,7 @@ export class ZenView extends View {
 		})
 	}
 
-	removeBodyClasses(removeBaseClass ?: boolean): void {
+	removeBodyClasses(removeBaseClass?: boolean): void {
 		if (removeBaseClass) {
 			this.containerEl.doc.body.removeClass("zen-enabled");
 		}
