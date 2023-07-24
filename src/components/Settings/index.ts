@@ -90,6 +90,17 @@ export class SettingsTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
+			.setName("Trigger fullscreen")
+			.setDesc("Whether entering/exiting Zen should cause Obsidian to enter/exit fullscreen mode.")
+			.addToggle(tc => tc
+				.setValue(this.plugin.settings.preferences.fullScreen)
+				.onChange(async (value) => {
+					this.plugin.settings.preferences.fullScreen = value;
+					await this.plugin.saveSettings();
+				})
+			);
+
+		new Setting(containerEl)
 			.setHeading()
 			.setName("Integrations")
 			.setDesc(createFragment((el) => {

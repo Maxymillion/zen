@@ -12,7 +12,8 @@ export interface ZenPreferences{
 	statusBar: boolean,
 	fileHeader: boolean,
 	sideDockLeft: boolean,
-	sideDockRight: boolean
+	sideDockRight: boolean,
+	fullScreen: boolean
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -24,6 +25,7 @@ export const DEFAULT_SETTINGS: Settings = {
 		fileHeader: false,
 		sideDockLeft: true,
 		sideDockRight: true,
+		fullScreen: false
 	},
 	integrations: []
 }
