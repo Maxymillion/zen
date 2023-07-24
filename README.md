@@ -39,4 +39,5 @@ Sometimes those names can be quite convoluted, hold the eye button next to the t
 This plugin works perfectly with my other plugin, [Simple Zoom](https://github.com/Maxymillion/simple-zoom) which allows you to use the `CMD/CTRL` and `=` or `-` key to only increase the font size of the editor instead of the complete UI.
 
 ## Credits
-- [Stille](https://github.com/michaellee/stille) Integration by [@ces3001](https://github.com/ces3001)
+- [@ces3001](https://github.com/ces3001) for the [Stille](https://github.com/michaellee/stille) Integration 
+- [@joshestein](https://github.com/joshestein) for quality of life improvements
