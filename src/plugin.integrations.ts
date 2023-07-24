@@ -44,5 +44,26 @@ export const pluginIntegrations: Integration[] = [
 				}
 			}
 		]
+	},
+	{
+		name: "obsidian-stille",
+		description: "Automatically enable Stille when entering Zen mode.",
+		enabled: false,
+		available: false,
+		options: {
+		},
+		settings: [
+			{
+				type: "enable",
+				callback(plugin: any): void {
+					return plugin.toggleStille();
+				}
+			}, {
+				type: "disable",
+				callback(plugin: any): void {
+					return plugin.toggleStille();
+				}
+			}
+		]
 	}
 ];
