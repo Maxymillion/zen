@@ -37,7 +37,6 @@ export default class Zen extends Plugin {
 
 		this.integrator = new Integrator(this.app, this);
 		this.integrator.load(pluginIntegrations);
-
 		this.app.workspace.onLayoutReady(async () => {
 			await this.initLeaf();
 		});
@@ -63,6 +62,9 @@ export default class Zen extends Plugin {
 
 	async saveSettings() {
 		await this.saveData(this.settings);
+
+		this.zenView.removeGlobalClasses();
+		this.zenView.addGlobalClasses();
 
 		if (this.settings.enabled) {
 			this.zenView.removeBodyClasses();

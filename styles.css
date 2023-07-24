@@ -23,7 +23,9 @@ https://github.com/Maxymillion/zen
 	opacity: 0.5;
 	transition: ease opacity 0.250s;
 }
-
+.zen-enabled .zen-header{
+	display: flex;
+}
 .zen-header:hover {
 	opacity: 0.8;
 }
@@ -151,6 +153,9 @@ https://github.com/Maxymillion/zen
 .mod-macos .zen-header {
 	left: calc(var(--frame-left-space) + var(--ribbon-width));
 }
+.zen-enabled.is-fullscreen.zen-module--ribbon .zen-header {
+	left: var(--size-4-2);
+}
 
 /*
  * Ribbon Styling, originally from the "Hider" Obsidian plugin.
@@ -213,13 +218,22 @@ https://github.com/Maxymillion/zen
 	padding-left: calc(var(--ribbon-width) + 30px);
 }
 
+.zen-enabled.zen-module--ribbon.is-fullscreen.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container {
+	padding-left: var(--ribbon-width);
+}
+
 .mod-windows.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft .workspace-tabs:first-of-type .workspace-tab-header-container {
 	padding-left: 36px;
 }
 
-.zen-enabled.zen-module--ribbon.zen-module--sideDockLeft.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs:first-of-type .workspace-tab-header-container {
+.zen-enabled.zen-module--ribbon.zen-global--hideZenButton.zen-module--sideDockLeft.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs:first-of-type .workspace-tab-header-container {
+	padding-left: calc(var(--frame-left-space) + var(--ribbon-width));
+}
+
+.zen-enabled.zen-module--ribbon:not(.zen-global--hideZenButton).zen-module--sideDockLeft.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window) .workspace-tabs:first-of-type .workspace-tab-header-container {
 	padding-left: calc(var(--frame-left-space) + var(--ribbon-width) + 30px);
 }
+
 
 /*
  * Fileheader
@@ -280,5 +294,13 @@ https://github.com/Maxymillion/zen
  */
 
 [data-type="com.maxymillion.zen"] .workspace-tab-header-status-icon.mod-pinned {
+	display: none;
+}
+
+.zen-module--autoHideShow__hide .zen-header{
+	display: none;
+}
+
+.zen-global--hideZenButton .workspace-tab-header[data-type="com.maxymillion.zen"], .zen-global--hideZenButton .zen-header  {
 	display: none;
 }

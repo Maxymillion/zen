@@ -1,7 +1,7 @@
 import {setIcon, View, WorkspaceLeaf} from "obsidian";
 import {VIEW_TYPE_ZEN} from "../constants";
 import Zen from "../main";
-import {ZenPreferences} from "../utils/types";
+import {GlobalPreferences, ZenPreferences} from "../utils/types";
 
 export class ZenLeaf extends WorkspaceLeaf {
 	tabHeaderEl: HTMLElement;
@@ -22,13 +22,14 @@ export class ZenView extends View {
 		super(leaf);
 		this.leaf = leaf;
 		this.plugin = plugin;
+		this.addGlobalClasses();
 	}
 
 	onunload() {
 		if (this.headerIcon) {
 			this.headerIcon.remove();
 		}
-
+		this.removeGlobalClasses();
 		super.onunload();
 	}
 
@@ -82,13 +83,15 @@ export class ZenView extends View {
 
 		let timer: ReturnType<typeof setTimeout>;
 		this.containerEl.doc.onmousemove = () => {
+			this.containerEl.doc.body.removeClass("zen-module--autoHideShow__hide");
+
 			if (!this.plugin.settings.enabled) return;
 			if (!this.plugin.settings.preferences.sideDockLeft) return;
+			if (!this.plugin.settings.preferences.autoHideZen) return;
 
-			this.headerIcon.style.display = 'flex';
 			clearTimeout(timer);
 			timer = setTimeout(() => {
-				this.headerIcon.style.display = 'none';
+				this.containerEl.doc.body.addClass("zen-module--autoHideShow__hide");
 			}, 1000);
 		};
 
@@ -106,6 +109,17 @@ export class ZenView extends View {
 			}
 		})
 	}
+	addGlobalClasses(): void {
+		Object.keys(this.plugin.settings.global).map((key: string) => {
+			if (this.plugin.settings.global[key as keyof GlobalPreferences]) {
+				this.containerEl.doc.body.addClass("zen-global--" + key);
+			}
+		})
+	}
+	removeGlobalClasses(): void {
+		this.containerEl.doc.body.className = this.containerEl.doc.body.className.split(" ").filter(c => !c.startsWith("zen-global--")).join(" ").trim();
+	}
+
 
 	removeBodyClasses(removeBaseClass?: boolean): void {
 		if (removeBaseClass) {

@@ -18,7 +18,48 @@ export class SettingsTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setHeading()
-			.setName("What elements should be hidden when zen mode is enabled?")
+			.setName("General Settings")
+
+		new Setting(containerEl)
+			.setName("Toggle fullscreen")
+			.setDesc("Should entering/exiting zen mode cause Obsidian to enter/exit fullscreen mode. (default: disabled)")
+			.addToggle(tc => tc
+				.setValue(this.plugin.settings.preferences.fullScreen)
+				.onChange(async (value) => {
+					this.plugin.settings.preferences.fullScreen = value;
+					await this.plugin.saveSettings();
+				})
+			);
+
+		new Setting(containerEl)
+			.setHeading()
+			.setName("Zen Button Settings")
+		new Setting(containerEl)
+			.setName("Disable")
+			.setDesc("When enabled zen mode can only be toggled using the commands.")
+			.addToggle(tc => tc
+				.setValue(this.plugin.settings.global.hideZenButton)
+				.onChange(async (value) => {
+					this.plugin.settings.global.hideZenButton = value;
+					await this.plugin.saveSettings();
+				})
+			);
+
+		new Setting(containerEl)
+			.setName("Auto-hide")
+			.setDesc("Auto-hide the zen mode button (after 1s of no mouse movement) during zen mode.")
+			.addToggle(tc => tc
+				.setValue(this.plugin.settings.preferences.autoHideZen)
+				.onChange(async (value) => {
+					this.plugin.settings.preferences.autoHideZen = value;
+					await this.plugin.saveSettings();
+				})
+			);
+
+		new Setting(containerEl)
+			.setHeading()
+			.setName("Element Settings")
+			.setDesc("What elements should be hidden when zen mode is enabled?")
 
 		new Setting(containerEl)
 			.setName("Application Ribbon")
@@ -85,17 +126,6 @@ export class SettingsTab extends PluginSettingTab {
 				.setValue(this.plugin.settings.preferences.sideDockRight)
 				.onChange(async (value) => {
 					this.plugin.settings.preferences.sideDockRight = value;
-					await this.plugin.saveSettings();
-				})
-			);
-
-		new Setting(containerEl)
-			.setName("Trigger fullscreen")
-			.setDesc("Whether entering/exiting Zen should cause Obsidian to enter/exit fullscreen mode.")
-			.addToggle(tc => tc
-				.setValue(this.plugin.settings.preferences.fullScreen)
-				.onChange(async (value) => {
-					this.plugin.settings.preferences.fullScreen = value;
 					await this.plugin.saveSettings();
 				})
 			);

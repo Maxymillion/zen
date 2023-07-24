@@ -3,7 +3,12 @@ import {IntegrationOptions} from "../plugin.integrations";
 export interface Settings {
 	enabled: boolean,
 	preferences: ZenPreferences,
+	global: GlobalPreferences
 	integrations: Array<{ name: string, description: string, enabled: boolean, available: boolean, options: IntegrationOptions }>
+}
+
+export interface GlobalPreferences{
+	hideZenButton: boolean
 }
 
 export interface ZenPreferences{
@@ -13,7 +18,8 @@ export interface ZenPreferences{
 	fileHeader: boolean,
 	sideDockLeft: boolean,
 	sideDockRight: boolean,
-	fullScreen: boolean
+	fullScreen: boolean,
+	autoHideZen: boolean,
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -25,7 +31,11 @@ export const DEFAULT_SETTINGS: Settings = {
 		fileHeader: false,
 		sideDockLeft: true,
 		sideDockRight: true,
-		fullScreen: false
+		fullScreen: false,
+		autoHideZen: false,
+	},
+	global: {
+		hideZenButton: false,
 	},
 	integrations: []
 }
