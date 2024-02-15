@@ -248,13 +248,7 @@ https://github.com/Maxymillion/zen
  */
 
 .zen-enabled.zen-module--tabs .workspace-split.mod-vertical.mod-root .workspace-tab-header-container {
-	background: transparent;
-	border-color: transparent;
-	box-shadow: none;
-}
-
-.zen-enabled.zen-module--tabs .workspace-split.mod-vertical.mod-root .workspace-tab-header-container > div {
-	visibility: hidden;
+	display: none;
 }
 
 /*
